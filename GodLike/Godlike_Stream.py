@@ -7,17 +7,17 @@ from Function_Godlike import *
 
 headers_str = '''
 GL-ClientType: 50
-GL-CurTime: 1536234578684
-GL-DeviceId: 66bda73041d94fceb691f50b9487b93c
-GL-Version: 1.4.0
-GL-Nonce: -7365621797954092460
-GL-Uid: d9e9b75060964bce90b783a28aedcede
-GL-Token: f46854b713da4342acde3e31f475f121
+GL-CurTime: 1537253960696
+GL-DeviceId: 2d86d3dddd1c4bc28bfeb875afa66eaf
+GL-Version: 1.4.1
+GL-Nonce: 326785210626795566
+GL-Uid: 4fab3d323e604a13ae910dd589f97759
+GL-Token: be879cdf849d417b8c9f6121070e4b56
 GL-Source: URS
-GL-CheckSum: 38a84ab00ff9fb9d2ef110d6ad41f0852e2a6131
+GL-CheckSum: 7c3cf5a04d5445ceab75b432f41da2467a07c591
 Content-Type: application/json; charset=utf-8
-Content-Length: 39
-Host: god.gameyw.netease.com
+Content-Length: 42
+Host: god-test.gameyw.netease.com
 Connection: Keep-Alive
 Accept-Encoding: gzip
 User-Agent: okhttp/3.11.0
@@ -36,12 +36,14 @@ def get_Hot(count):
         print("try update %s : code = %s" %(i , jsonr["code"]))
 
 def try_to_comment():
-    url = 'http://god.gameyw.netease.com/v1/app/feed/comment'
-    for i in  range(11111):
+    # url = 'http://god.gameyw.netease.com/v1/app/feed/comment'   #正式服
+    # url = "http://god-test.gameyw.netease.com/v1/app/feed/comment?ts=1536927189&uf=02f28b62-7cd9-45d0-8e74-43f5c0409f11&ab=727763be9bec8c81fc54d6f619f3c20c89&ef=e98b879c348966453f1c75b5b7bb782917"   #测试服
+    url = "http://god-test.gameyw.netease.com/v1/app/feed/comment"
+    for i in  range(100):
         headers['GL-CurTime'] = get_curTime()  # 添加 GL-CurTime 字段进入字典
         data = {"content":i,
-                "feedId":"5b9114dc66636f743b54d914",
-                "feedUid":"a7aee4dc4df94e0eb2e5af75b6aeae1c"}
+                "feedId":"5ba09d2ae795d1368a5fb8ba",
+                "feedUid":"7afb177ff48541f790bdc1523a46ca15"}
         res = requests.post(url, headers=headers,data=json.dumps(data) ,verify=False)
         print("try to common : %s" %i)
 

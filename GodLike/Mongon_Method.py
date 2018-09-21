@@ -1,13 +1,15 @@
 import pymongo
+from bson.objectid import ObjectId
 
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mycol = myclient["rounood"]["mycol2"]
 
 # 查找第一条
-# x = mycol.find_one()
-# for x in mycol.find():   #展示所有内容
-    # print(x)
+x = mycol.find_one({"_id" : ObjectId("5b850047072d3465a74c8a0a")})
+print(x)
+# for x in mycol.find({'id':ObjectId('50f0d76347f4ec148890ef1e')}):   #展示所有内容
+#     print(x)
 
 # 查找指定数据
 # myquer = {"name":"第二条"}
@@ -101,8 +103,8 @@ mycol = myclient["rounood"]["mycol2"]
 '''
 删除集合
 '''
-db_rounood = myclient["rounood"]["rounood"]
-db_rounood.drop()
+# db_rounood = myclient["rounood"]["rounood"]
+# db_rounood.drop()
 
 
 
